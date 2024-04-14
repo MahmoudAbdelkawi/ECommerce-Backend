@@ -32,6 +32,8 @@ jobs:
 
     - name: Merge PR
       if: success()
-      uses: mheap/github-action-auto-merge@v0.1.2
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git fetch origin ${{ github.event.pull_request.head.ref }}
+        git checkout ${{ github.event.pull_request.base.ref }}
+        git merge --no-ff ${{ github.event.pull_request.head.ref }}
+        git push origin ${{ github.event.pull_request.base.ref }}
