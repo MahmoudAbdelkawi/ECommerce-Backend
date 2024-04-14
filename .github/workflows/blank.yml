@@ -1,0 +1,34 @@
+name: CI/CD
+
+on:
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.x'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release
+
+    - name: Test
+      run: dotnet test --configuration Release --no-restore
+
+    - name: Merge PR
+      if: success()
+      uses: mheap/github-action-auto-merge@v0.1.2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
