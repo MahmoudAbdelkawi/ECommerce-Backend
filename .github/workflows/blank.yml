@@ -34,6 +34,6 @@ jobs:
       if: success()
       run: |
         git fetch origin ${{ github.event.pull_request.head.ref }}
-        git checkout ${{ github.event.pull_request.base.ref }}
+        git checkout dev  # Assuming your base branch is named 'dev'
         git merge --no-ff ${{ github.event.pull_request.head.ref }}
-        git push origin ${{ github.event.pull_request.base.ref }}
+        git push origin dev
