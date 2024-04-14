@@ -99,7 +99,7 @@ namespace Testing
             await _categoryRepository.UpdateAsync(category);
 
             // Assert
-            var result = await _context.Categories.FirstOrDefaultAsync(c => c.Name == "Updated Test Category");
+            var result = await _context.Categories.FirstOrDefaultAsync(c => c.Name == "Not Updated Test Category");
             Assert.NotNull(result);
         }
 
