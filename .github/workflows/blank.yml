@@ -20,7 +20,10 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore
-
+      
+    - name: Change directory to ECommerce.Api
+      run: cd ECommerce.Api
+      
     - name: Build
       run: dotnet build --configuration Release
 
