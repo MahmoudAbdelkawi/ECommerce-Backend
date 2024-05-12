@@ -20,15 +20,12 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore
-
+      
+    - name: Change directory to ECommerce.Api
+      run: cd ECommerce.Api
+      
     - name: Build
       run: dotnet build --configuration Release
 
     - name: Test
       run: dotnet test --configuration Release --no-restore
-
-    - name: Merge PR
-      if: success()
-      uses: mheap/github-action-auto-merge@v0.1.2
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
