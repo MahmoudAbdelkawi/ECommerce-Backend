@@ -10,8 +10,8 @@ ECommerce.Core/obj/
 ECommerce.Infrastructure/bin/
 ECommerce.Infrastructure/obj/
 
-ECommerce.Tests/bin/
-ECommerce.Tests/obj/
+ECommerce.Testing/bin/
+ECommerce.Testing/obj/
 
 ECommerce.Domain/bin/
 ECommerce.Domain/obj/
